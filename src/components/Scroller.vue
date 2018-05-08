@@ -166,17 +166,6 @@
   import Spinner from './Spinner.vue'
   import Arrow from './Arrow.vue'
 
-  const re = /^[\d]+(\%)?$/
-
-  const widthAndHeightCoerce = (v) => {
-    if (v[v.length - 1] != '%') return v + 'px'
-    return v
-  }
-
-  const widthAndHeightValidator = (v) => {
-    return re.test(v)
-  }
-
   export default {
     components: {
       Spinner,
@@ -199,14 +188,12 @@
 
       width: {
         type: String,
-        default: '100%',
-        validator: widthAndHeightValidator
+        default: '100%'
       },
 
       height: {
         type: String,
-        default: '100%',
-        validator: widthAndHeightValidator
+        default: '100%'
       },
 
       snapping: {
@@ -259,11 +246,11 @@
 
     computed: {
       w: function () {
-        return widthAndHeightCoerce(this.width)
+        return this.width
       },
 
       h: function () {
-        return widthAndHeightCoerce(this.height)
+        return this.height
       },
 
       showInfiniteLayer () {
